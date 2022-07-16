@@ -62,21 +62,11 @@ function App() {
   };
 
   useEffect(()=>{runCoco()},[]);
-  const [facingMode, setFacingMode] = React.useState(FACING_MODE_USER);
+  const [facingMode, setFacingMode] = React.useState(FACING_MODE_ENVIRONMENT);
 
   let videoConstraints: MediaTrackConstraints = {
     facingMode: facingMode,
-    width: 270,
-    height: 480
   };
-
-  const handleClick = React.useCallback(() => {
-    setFacingMode((prevState) =>
-      prevState === FACING_MODE_USER
-        ? FACING_MODE_ENVIRONMENT
-        : FACING_MODE_USER
-    );
-  }, []);
 
   console.log(facingMode + videoConstraints);
 
@@ -89,14 +79,37 @@ function App() {
           ref={webcamRef}
           muted={true}
           videoConstraints={videoConstraints}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zindex: 8,
+            objectFit: "fit",
+            height: "auto",
+            width: "100%",
+          }}
         />
 
         <canvas id="bounding-box"
           ref={canvasRef}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zindex: 8,
+            objectFit: "fit",
+            height: "auto",
+            width: "100%",
+          }}
         />
 
         </div>
-        <button onClick={handleClick}>Switch camera</button>
       </header>
     </div>
   );
