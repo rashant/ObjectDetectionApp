@@ -68,6 +68,14 @@ function App() {
         <Webcam
           ref={webcamRef}
           muted={true}
+          constructor(props) {
+              super(props);
+
+              this.state = {
+                cameraType : 'back',
+                mirrorMode : false
+              }
+            }
           style={{
             position: "absolute",
             marginLeft: "auto",
