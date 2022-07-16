@@ -93,18 +93,6 @@ function App() {
 
         <canvas id="bounding-box"
           ref={canvasRef}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 8,
-            objectFit: "fit",
-            height: "75%",
-            width: "75%",
-          }}
         />
 
         </div>
