@@ -67,9 +67,6 @@ const FACING_MODE_ENVIRONMENT = "environment";
       facingMode: FACING_MODE_ENVIRONMENT
     };
 
-    const WebcamCapture = () => {
-      const [facingMode, setFacingMode] = React.useState(FACING_MODE_ENVIRONMENT);
-
       const handleClick = React.useCallback(() => {
         setFacingMode(
           prevState =>
