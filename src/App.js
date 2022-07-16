@@ -74,8 +74,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <div id="video-stream">
-        <Webcam className="my-webcam-class"
+        <Webcam
           ref={webcamRef}
           muted={true}
           videoConstraints={videoConstraints}
@@ -103,8 +102,6 @@ function App() {
              objectFit: "fill",
           }}
         />
-
-        </div>
       </header>
     </div>
   );
