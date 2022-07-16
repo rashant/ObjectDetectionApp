@@ -60,7 +60,24 @@ function App() {
   };
 
   useEffect(()=>{runCoco()},[]);
+const FACING_MODE_USER = "user";
+const FACING_MODE_ENVIRONMENT = "environment";
 
+    const videoConstraints = {
+      facingMode: FACING_MODE_ENVIRONMENT
+    };
+
+    const WebcamCapture = () => {
+      const [facingMode, setFacingMode] = React.useState(FACING_MODE_ENVIRONMENT);
+
+      const handleClick = React.useCallback(() => {
+        setFacingMode(
+          prevState =>
+            prevState === FACING_MODE_USER
+              ? FACING_MODE_ENVIRONMENT
+              : FACING_MODE_USER
+        );
+      }, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -68,14 +85,6 @@ function App() {
         <Webcam
           ref={webcamRef}
           muted={true}
-          constructor(props) {
-              super(props);
-
-              this.state = {
-                cameraType : 'back',
-                mirrorMode : false
-              }
-            }
           style={{
             position: "absolute",
             marginLeft: "auto",
@@ -87,6 +96,7 @@ function App() {
             objectFit: "fit",
             height: "auto",
             width: "100%",
+            videoConstraints:videoConstraints,
           }}
         />
 
