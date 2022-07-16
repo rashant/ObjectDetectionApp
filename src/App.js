@@ -67,14 +67,6 @@ const FACING_MODE_ENVIRONMENT = "environment";
       facingMode: FACING_MODE_ENVIRONMENT
     };
 
-      const handleClick = React.useCallback(() => {
-        setFacingMode(
-          prevState =>
-            prevState === FACING_MODE_USER
-              ? FACING_MODE_ENVIRONMENT
-              : FACING_MODE_USER
-        );
-      }, []);
   return (
     <div className="App">
       <header className="App-header">
