@@ -9,6 +9,8 @@ import "./App.css";
 // 2. TODO - Import drawing utility here
 import { drawRect } from "./utilities";
 
+const FACING_MODE_USER = "user";
+const FACING_MODE_ENVIRONMENT = "environment";
 
 function App() {
   const webcamRef = useRef(null);
@@ -60,9 +62,24 @@ function App() {
   };
 
   useEffect(()=>{runCoco()},[]);
-   const videoConstraints = {
-      facingMode: { exact: "environment" }
-    };
+  const [facingMode, setFacingMode] = React.useState(FACING_MODE_USER);
+
+  let videoConstraints: MediaTrackConstraints = {
+    facingMode: facingMode,
+    width: 270,
+    height: 480
+  };
+
+  const handleClick = React.useCallback(() => {
+    setFacingMode((prevState) =>
+      prevState === FACING_MODE_USER
+        ? FACING_MODE_ENVIRONMENT
+        : FACING_MODE_USER
+    );
+  }, []);
+
+  console.log(facingMode + videoConstraints);
+
 
   return (
     <div className="App">
@@ -71,19 +88,7 @@ function App() {
         <Webcam
           ref={webcamRef}
           muted={true}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            objectFit: "fit",
-            height: "auto",
-            width: "100%",
-            videoConstraints:videoConstraints,
-          }}
+          videoConstraints={videoConstraints}
         />
 
         <canvas id="bounding-box"
@@ -97,11 +102,13 @@ function App() {
             textAlign: "center",
             zindex: 8,
             objectFit: "fit",
-            height: "auto",
-            width: "100%",
+            height: "75%",
+            width: "75%",
           }}
         />
+
         </div>
+        <button onClick={handleClick}>Switch camera</button>
       </header>
     </div>
   );
