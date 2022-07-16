@@ -60,12 +60,9 @@ function App() {
   };
 
   useEffect(()=>{runCoco()},[]);
-const FACING_MODE_USER = "user";
-const FACING_MODE_ENVIRONMENT = "environment";
-
-    const videoConstraints = {
-      facingMode: FACING_MODE_ENVIRONMENT
-    };
+   const videoConstraints = {
+          facingMode: { exact: "environment" }
+       };
 
   return (
     <div className="App">
