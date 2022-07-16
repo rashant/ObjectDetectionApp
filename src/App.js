@@ -61,8 +61,8 @@ function App() {
 
   useEffect(()=>{runCoco()},[]);
    const videoConstraints = {
-          facingMode: { exact: "environment" }
-       };
+      facingMode: { exact: "environment" }
+    };
 
   return (
     <div className="App">
