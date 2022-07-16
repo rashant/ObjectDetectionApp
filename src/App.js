@@ -75,21 +75,18 @@ function App() {
     <div className="App">
       <header className="App-header">
       <div id="video-stream">
-        <Webcam
+        <Webcam className="my-webcam-class"
           ref={webcamRef}
           muted={true}
           videoConstraints={videoConstraints}
           style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
+          position: "absolute",
             textAlign: "center",
             zindex: 8,
-            objectFit: "fit",
-            height: "auto",
-            width: "100%",
+            right:0,
+            height: "100vh",
+             width: "100%",
+             objectFit: "fill",
           }}
         />
 
@@ -97,15 +94,13 @@ function App() {
           ref={canvasRef}
           style={{
             position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
             textAlign: "center",
+            left:0,
+            right:0,
             zindex: 8,
-            objectFit: "fit",
-            height: "auto",
-            width: "100%",
+            height: "100vh",
+             width: "100%",
+             objectFit: "fill",
           }}
         />
 
